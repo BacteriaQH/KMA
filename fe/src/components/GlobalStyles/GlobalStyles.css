@@ -1,0 +1,41 @@
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+    -moz-appearance: textfield;
+}
+.scroll {
+    max-height: 200px;
+    overflow-x: scroll;
+    max-width: 900px;
+}
+
+.scroll thead {
+    background: #f3f3f3;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+/* Just common table stuff. Really. */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+th,
+td {
+    padding: 8px 16px;
+    white-space: nowrap;
+}
+th {
+    background: #eee;
+}
+a,
+a:hover {
+    text-decoration: none;
+}

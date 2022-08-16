@@ -7,7 +7,7 @@ function Footer() {
     return (
         <Row className="bg-light mt-3 sticky-bottom">
             <Col lg={4} className="text-center">
-                &copy;<a href="https://actvn.netlify.app/">actvn</a>, All Right Reserved.
+                &copy;<a href="https://actvn.netlify.app/home">actvn</a>, All Right Reserved.
             </Col>
             <Col lg={3} className="text-center">
                 Designed By BacteriaQH

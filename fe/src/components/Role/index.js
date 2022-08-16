@@ -28,7 +28,11 @@ const Dropdown = () => {
 };
 
 const Icon = forwardRef((props, ref) => {
-    return <FontAwesomeIcon ref={ref} icon={faCircleChevronDown} />;
+    return (
+        <BootstrapButton variant="#fff" boder={'none'}>
+            <FontAwesomeIcon ref={ref} icon={faCircleChevronDown} />
+        </BootstrapButton>
+    );
 });
 
 const Role = ({ showDropdown, name, role }) => {
@@ -49,7 +53,8 @@ const Role = ({ showDropdown, name, role }) => {
                                 <Tippy
                                     placement="bottom"
                                     interactive
-                                    delay="300"
+                                    trigger="click"
+                                    delay={200}
                                     render={(attrs) => <Dropdown tabIndex="-1" {...attrs} />}
                                 >
                                     <span>

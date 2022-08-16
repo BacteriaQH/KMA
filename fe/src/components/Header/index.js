@@ -41,7 +41,7 @@ function Header() {
                 <Col lg={3}>
                     <Row>
                         <Col lg={3}>
-                            <Link to={'/home'}>
+                            <Link to={'/home'} className="m-3">
                                 <Image isLogo alt={'logo'} />
                             </Link>
                         </Col>

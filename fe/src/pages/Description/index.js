@@ -10,7 +10,7 @@ function Description() {
                 <Col lg={3}>
                     <Row>
                         <Col lg={3}>
-                            <Link to={'/'}>
+                            <Link to={'/'} className="mx-3 my-3">
                                 <Image isLogo alt={'logo'} />
                             </Link>
                         </Col>

@@ -81,8 +81,8 @@ const EditTeacher = () => {
     };
     const handleClick = (e) => {
         e.preventDefault();
-        CustomAxios.post(`/api/teachers/update`, formData).then((res) => {
-            res.data.code === 200 ? navigate('/teachers/profile/list') : setMessage(res.data.message);
+        CustomAxios.post(`/api/teachers/update/${match.id}`, formData).then((res) => {
+            res.data.code === 200 ? navigate('/teachers/profile') : setMessage(res.data.message);
         });
     };
     return (

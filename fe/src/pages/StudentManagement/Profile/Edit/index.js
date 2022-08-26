@@ -126,8 +126,8 @@ const EditStudent = () => {
     };
     const handleClick = (e) => {
         e.preventDefault();
-        CustomAxios.post(`/api/students/update`, formData).then((res) => {
-            res.data.code === 200 ? navigate('/students/profile/list') : setMessage(res.data.message);
+        CustomAxios.post(`/api/students/update/${match.id}`, formData).then((res) => {
+            res.data.code === 200 ? navigate('/students/profile') : setMessage(res.data.message);
         });
     };
     return (

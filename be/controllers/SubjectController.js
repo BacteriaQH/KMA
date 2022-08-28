@@ -56,10 +56,22 @@ const GetSubjectByDepartment = async (req, res) => {
     });
     return res.status(200).send(subs);
 };
+const ImportSubject = async (req, res) => {
+    const body = req.body;
+    const resultA = body.map(async (sub) => {
+        sub.id = generateUID(20);
+        const result = await addSubject(sub);
+        return result ? 1 : 0;
+    });
+    return resultA.includes(0)
+        ? res.status(401).json({ code: 401, message: 'Error' })
+        : res.status(200).json({ code: 200, message: 'Create Subject success' });
+};
 module.exports = {
     AddSubject,
     ListSubject,
     GetSubjectById,
     UpdateSubject,
     GetSubjectByDepartment,
+    ImportSubject,
 };

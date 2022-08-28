@@ -85,6 +85,7 @@ const EditStudent = () => {
                 alert('Bạn không có quyền truy cập');
                 navigate('/home');
             } else if (res.status === 200) {
+                console.log(res.data);
                 setImage(res.data.image);
                 const nameF = res.data.name.split(' ');
                 const last = nameF.pop();

@@ -38,18 +38,21 @@ const initWebRoutes = (app) => {
     router.post('/students/update-class', Department3Middleware, StudentController.UpdateClassStudent);
     router.get('/students/:id', StudentMiddleware, StudentController.GetStudentById);
     router.post('/students/update/:id', StudentMiddleware, StudentController.UpdateStudent);
+    router.post('/students/import', Department2Middleware, StudentController.ImportStudent);
     // router.delete('/students/delete', StudentController.DeleteStudent);
 
     router.post('/teachers/add', AdminMiddleware, TeacherController.AddTeacher);
     router.get('/teachers/list', AdminMiddleware, TeacherController.ListTeacher);
     router.get('/teachers/:id', TeacherMiddleware, TeacherController.GetTeacherById);
     router.post('/teachers/update/:id', TeacherMiddleware, TeacherController.UpdateTeacher);
+    router.post('/teachers/import', AdminMiddleware, TeacherController.ImportTeacher);
 
     router.post('/subjects/add', Department3Middleware, SubjectController.AddSubject);
     router.get('/subjects/list', Department3Middleware, SubjectController.ListSubject);
     router.get('/subjects/id', Department3Middleware, SubjectController.GetSubjectById);
     router.get('/subjects/department', Department3Middleware, SubjectController.GetSubjectByDepartment);
     router.post('/subjects/update', Department3Middleware, SubjectController.UpdateSubject);
+    router.post('/subjects/import', Department3Middleware, SubjectController.ImportSubject);
 
     router.post('/grades/add', Department1Middleware, GradeController.AddGrade);
     router.post('/grades/update', Department1Middleware, GradeController.UpdateGrade);

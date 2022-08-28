@@ -16,7 +16,7 @@ const AddTeacher = async (req, res) => {
         password: hash,
         role_symbol: 3,
     });
-    result && addTeacherToUser
+    return result && addTeacherToUser
         ? res.status(200).json({ code: 200, message: 'Create teacher success' })
         : res.status(401).json({ code: 401, message: 'Error' });
 };
@@ -32,12 +32,12 @@ const ListTeacher = async (req, res) => {
             department: teacher.department,
         });
     });
-    res.status(200).send(tch);
+    return res.status(200).send(tch);
 };
 const GetTeacherById = async (req, res) => {
     const id = req.query.id;
     const teacher = await getTeacherById(id);
-    res.status(200).send(teacher[0]);
+    return res.status(200).send(teacher[0]);
 };
 const UpdateTeacher = async (req, res) => {
     const body = req.body;
@@ -45,13 +45,34 @@ const UpdateTeacher = async (req, res) => {
     body.gender = Number(body.gender);
     const { id, firstname, lastname, ...other } = body;
     const resultQ = await updateTeacher(id, other);
-    resultQ
+    return resultQ
         ? res.status(200).json({ code: 200, message: 'Update teacher successfully' })
         : res.status(401).json({ code: 401, message: 'Error' });
+};
+const ImportTeacher = async (req, res) => {
+    const body = req.body;
+    body.map(async (item) => {
+        item.id = generateUID(20);
+        item.gender = Number(item.gender);
+
+        const result = await addTeacher(item);
+        const hash = await hashPassword('123456789');
+        const addTeacherToUser = await createUser({
+            id: result,
+            name: item.name,
+            email: item.code,
+            password: hash,
+            role_symbol: 3,
+        });
+        return result && addTeacherToUser
+            ? res.status(200).json({ code: 200, message: 'Create teacher success' })
+            : res.status(401).json({ code: 401, message: 'Error' });
+    });
 };
 module.exports = {
     AddTeacher,
     ListTeacher,
     GetTeacherById,
     UpdateTeacher,
+    ImportTeacher,
 };

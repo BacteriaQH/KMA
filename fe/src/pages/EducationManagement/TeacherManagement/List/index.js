@@ -10,6 +10,7 @@ import {
     FormLabel,
     Col,
     Row,
+    Button,
 } from 'react-bootstrap';
 
 import { faPenSquare } from '@fortawesome/free-solid-svg-icons';
@@ -71,7 +72,14 @@ function ListTeacher() {
             setIsLoading(false);
         });
     };
-
+    const handleSaveDataToDB = () => {
+        const data = excelBodyValue.map((i) => {
+            return { name: i[1], code: i[2], department: i[3], email: i[4], gender: i[5], phone: i[6] };
+        });
+        CustomAxios.post(`/api/teachers/import`, data).then((res) => {
+            console.log(res.data);
+        });
+    };
     return (
         <>
             <Title title="Danh sách giảng viên" />
@@ -143,7 +151,7 @@ function ListTeacher() {
                 <Tab eventKey={'import'} title="Import file excel">
                     <FormGroup>
                         <ButtonBootstrap onClick={() => fileRef.current.click()} className="m-2">
-                            Nhập file excel
+                            Xem excel
                         </ButtonBootstrap>
                         <FormControl
                             type="file"
@@ -186,6 +194,7 @@ function ListTeacher() {
                             </Table>
                         </>
                     )}
+                    <Button onClick={handleSaveDataToDB}>Nhập file</Button>
                 </Tab>
             </Tabs>
         </>

@@ -73,7 +73,9 @@ const UpdateClassStudent = async (req, res) => {
 };
 const GetStudentById = async (req, res) => {
     const id = req.query.id;
+    console.log(id);
     const student = await getStudentById(id);
+    console.log(student);
     res.status(200).send(student[0]);
 };
 const ListStudentByClass = async (req, res) => {
@@ -103,6 +105,25 @@ const DeleteStudent = async (req, res) => {
         ? res.status(200).json({ code: 200, message: 'Success' })
         : res.status(404).json({ code: 404, message: 'Error' });
 };
+
+const ImportStudent = async (req, res) => {
+    const data = req.body;
+    data.map(async (student) => {
+        student.id = generateUID(20);
+        const result = await addStudent(student);
+        const hash = await hashPassword('123456789');
+        const addStudentToUser = await createUser({
+            id: result,
+            name: student.name,
+            email: student.code,
+            password: hash,
+            role_symbol: 2,
+        });
+        result && addStudentToUser
+            ? res.status(200).json({ code: 200, message: 'Create student success' })
+            : res.status(401).json({ code: 401, message: 'Error' });
+    });
+};
 module.exports = {
     AddStudent,
     ListStudent,
@@ -112,4 +133,5 @@ module.exports = {
     UpdateClassStudent,
     ListStudentByClass,
     DeleteStudent,
+    ImportStudent,
 };

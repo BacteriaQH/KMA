@@ -10,6 +10,7 @@ import {
     FormLabel,
     Col,
     Row,
+    Button,
 } from 'react-bootstrap';
 
 import { faPenSquare } from '@fortawesome/free-solid-svg-icons';
@@ -61,6 +62,22 @@ function ListSubject() {
         //let buffer = XLSX.write(workbook, { bookType: "xlsx", type: "buffer" });
         //XLSX.write(workbook, { bookType: "xlsx", type: "binary" });
         xlsx.writeFile(workbook, 'DataSheet.xlsx');
+    };
+    const handleSaveDataToDB = () => {
+        const data = excelBodyValue.map((item) => {
+            return {
+                name: item[1],
+                code: item[2],
+                department: item[3],
+                all: item[4],
+                theory: item[5],
+                practice: item[6],
+                exercise: item[7],
+            };
+        });
+        CustomAxios.post(`/api/subjects/import`, data).then((res) => {
+            console.log(res);
+        });
     };
     return (
         <>
@@ -144,7 +161,7 @@ function ListSubject() {
                 <Tab eventKey={'import'} title="Import file excel">
                     <FormGroup>
                         <ButtonBootstrap onClick={() => fileRef.current.click()} className="m-2">
-                            Nhập file excel
+                            Xem file excel
                         </ButtonBootstrap>
                         <FormControl
                             type="file"
@@ -187,6 +204,7 @@ function ListSubject() {
                             </Table>
                         </>
                     )}
+                    <Button onClick={handleSaveDataToDB}> Nhập file</Button>
                 </Tab>
             </Tabs>
         </>

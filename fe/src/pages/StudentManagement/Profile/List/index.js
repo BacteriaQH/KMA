@@ -11,6 +11,7 @@ import {
     Col,
     Row,
     FormSelect,
+    Button,
 } from 'react-bootstrap';
 
 import { faPenSquare } from '@fortawesome/free-solid-svg-icons';
@@ -91,6 +92,15 @@ function ListStudent() {
         //let buffer = XLSX.write(workbook, { bookType: "xlsx", type: "buffer" });
         //XLSX.write(workbook, { bookType: "xlsx", type: "binary" });
         xlsx.writeFile(workbook, 'DataSheet.xlsx');
+    };
+
+    const handleSaveExcelToDB = () => {
+        const data = excelBodyValue.map((i) => {
+            return { name: i[1], code: i[2], class: i[3], gender: i[4] };
+        });
+        CustomAxios.post(`/api/students/import`, data).then((res) => {
+            console.log(res.data);
+        });
     };
     return (
         <>
@@ -196,7 +206,7 @@ function ListStudent() {
                     <Search />
                     <FormGroup>
                         <ButtonBootstrap onClick={() => fileRef.current.click()} className="m-2">
-                            Nhập file excel
+                            Xem file
                         </ButtonBootstrap>
                         <FormControl
                             type="file"
@@ -239,6 +249,7 @@ function ListStudent() {
                             </Table>
                         </>
                     )}
+                    <Button onClick={handleSaveExcelToDB}> Nhập file</Button>
                 </Tab>
             </Tabs>
         </>

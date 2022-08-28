@@ -190,14 +190,14 @@ function FindGrade() {
                                 >
                                     Tra cứu
                                 </ButtonBootstrap>
-                                <ButtonBootstrap
+                                {/* <ButtonBootstrap
                                     variant="primary"
                                     className="btn btn-primary mb-3 ms-1"
                                     type="submit"
                                     disabled={!valueFetch}
                                 >
                                     Xuất excel
-                                </ButtonBootstrap>
+                                </ButtonBootstrap> */}
                             </FormGroup>
                             {resultStudentID && (
                                 <>
@@ -504,7 +504,7 @@ function FindGrade() {
                         </Tab>
                     </Tabs>
                 </Tab>
-                <Tab eventKey={'import'} title="Import file excel">
+                {/* <Tab eventKey={'import'} title="Import file excel">
                     <Search showStudentSelect showSubjectSelect />
                     <FormGroup>
                         <ButtonBootstrap onClick={() => fileRef.current.click()} className="m-2">
@@ -561,7 +561,7 @@ function FindGrade() {
                             </Table>
                         </>
                     )}
-                </Tab>
+                </Tab> */}
             </Tabs>
         </>
     );

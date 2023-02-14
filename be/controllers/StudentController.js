@@ -74,6 +74,7 @@ const UpdateClassStudent = async (req, res) => {
 const GetStudentById = async (req, res) => {
     const id = req.query.id;
     const student = await getStudentById(id);
+    console.log(student);
     res.status(200).send(student[0]);
 };
 const ListStudentByClass = async (req, res) => {

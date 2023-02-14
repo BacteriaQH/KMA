@@ -77,7 +77,6 @@ const initWebRoutes = (app) => {
     router.post('/classrooms/add-teacher-id', Department3Middleware, ClassroomController.AddTeacherToClassroom);
 
     router.get('/roles/list', AdminMiddleware, RoleController.ListRoles);
-
     router.post('/query', QueryController);
     return app.use('/api', router);
 };

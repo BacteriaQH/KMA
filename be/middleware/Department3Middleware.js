@@ -8,7 +8,8 @@ const verifyToken = require('./verifyToken');
 
 const Department3Middleware = (req, res, next) => {
     verifyToken(req, res, () => {
-        if (req.user.role_symbol === '1' || req.user.role_symbol === '6') {
+        console.log(req.user.role_symbol);
+        if (req.user.role_symbol === '1' || req.user.role_symbol === '6' || req.user.id === req.params.id || req.user.role_symbol === '3') {
             next();
         } else {
             res.status(200).json({ code: 403, message: 'You are not allow to access this page' });

@@ -25,7 +25,7 @@ function Authorization() {
     useEffect(() => {
         setIsLoading(true);
         CustomAxios.get(`/api/roles/list`).then((res) => {
-            setRoles(res.data);
+            setRoles([res.data[0], res.data[3], res.data[4], res.data[5]]);
             setIsLoading(false);
         });
     }, []);

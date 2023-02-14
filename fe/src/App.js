@@ -19,7 +19,7 @@ function App() {
 
     let userRoutes;
     let user = useSelector((state) => state.auth.login.currentUser);
-    let role_symbol = Number.parseInt(user.role_symbol);
+    let role_symbol = Number.parseInt(user?.role_symbol);
     CustomAxios.interceptors.request.use(
         async (config) => {
             const access_token = await localStorage.getItem('access_token');

@@ -87,6 +87,7 @@ const EditStudent = () => {
             } else if (res.status === 200) {
                 console.log(res.data);
                 setImage(res.data.image);
+                console.log(res.data);
                 const nameF = res.data.name.split(' ');
                 const last = nameF.pop();
                 let str = '';

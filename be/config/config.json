@@ -1,9 +1,9 @@
 {
     "development": {
-        "username": "gxcmecjhlvdjod",
-        "password": "7ce5882b80d63516f8685afb5118a86257fa350cc62ccf989a1c8ad8e8392c15",
-        "database": "da0bm8i1s3ocdl",
-        "host": "ec2-44-198-82-71.compute-1.amazonaws.com",
+        "username": "actvn_db_user",
+        "password": "RTjMbDx2naEm4Rx7FcS7oTjjSL1PtnjV",
+        "database": "actvn_db",
+        "host": "dpg-ce29rbirrk09esd9c0ug-a.singapore-postgres.render.com",
         "port": 5432,
         "dialect": "postgres",
         "logging": false,
